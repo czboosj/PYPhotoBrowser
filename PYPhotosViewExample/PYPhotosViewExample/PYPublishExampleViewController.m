@@ -3,10 +3,13 @@
 //  Created by CoderKo1o.
 //  Copyright © 2016年 iphone5solo. All rights reserved.
 //
-
 #import "PYPublishExampleViewController.h"
 #import "PYPhotosView.h"
 #import "PYPhotosPreviewController.h"
+
+
+
+#import "PYPhotoView.h"
 
 @interface PYPublishExampleViewController () <PYPhotosViewDelegate>
 
@@ -24,6 +27,7 @@
     
     // 1. 常见一个发布图片时的photosView
     PYPhotosView *publishPhotosView = [PYPhotosView photosView];
+    publishPhotosView.isNotPre = YES;
     // 2. 添加本地图片
     NSMutableArray *imagesM = [NSMutableArray array];
     for (int i = 0; i < arc4random_uniform(4) + 1; i++) {
@@ -89,5 +93,9 @@
 {
     NSLog(@"进入预览图片");
 }
-
+- (void)photosView:(PYPhotosView *)photosView didClickPhotoView:(PYPhotoView *)photoView{
+    NSLog(@"点击里面的一个view不进预览%d",photoView.tag);
+    
+    
+}
 @end
