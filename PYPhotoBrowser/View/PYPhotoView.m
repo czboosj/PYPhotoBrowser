@@ -583,6 +583,10 @@ static CGSize originalSize;
 {
     [self.images removeObjectAtIndex:self.tag];
     self.photosView.images = self.images;
+    // 代理
+    if ([self.photosView.delegate respondsToSelector:@selector(photosView:didDeleteImageIndex:)]) { // 自定义 自己管理删除事件
+        [self.photosView.delegate photosView:self.photosView didDeleteImageIndex:self.tag];
+    }
 }
 
 - (void)layoutSubviews

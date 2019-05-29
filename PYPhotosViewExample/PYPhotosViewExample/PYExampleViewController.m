@@ -55,6 +55,7 @@
     PYPhotosView *flowPhotosView = [PYPhotosView photosView];
     // 设置缩略图数组
     flowPhotosView.thumbnailUrls = thumbnailImageUrls;
+    
     // 设置原图地址
     flowPhotosView.originalUrls = originalImageUrls;
     flowPhotosView.replaceThumbnailWhenOriginalDownloaded = NO;
@@ -62,14 +63,13 @@
     flowPhotosView.pageType = PYPhotosViewPageTypeLabel;
     flowPhotosView.py_centerX = self.view.py_centerX;
     flowPhotosView.py_y = 20 + 64;
-    
     // 2.2创建线性布局
     PYPhotosView *linePhotosView = [PYPhotosView photosViewWithThumbnailUrls:thumbnailImageUrls originalUrls:originalImageUrls layoutType:PYPhotosViewLayoutTypeLine];
     // 设置Frame
     linePhotosView.py_y = CGRectGetMaxY(flowPhotosView.frame) + PYMargin * 2;
     linePhotosView.py_x = PYMargin;
     linePhotosView.py_width = self.view.py_width - linePhotosView.py_x * 2;
-    
+
     // 3. 添加到指定视图中
     [self.view addSubview:flowPhotosView];
     [self.view addSubview:linePhotosView];

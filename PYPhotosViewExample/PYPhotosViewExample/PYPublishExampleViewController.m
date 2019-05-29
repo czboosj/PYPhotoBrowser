@@ -98,4 +98,7 @@
     
     
 }
+- (void)photosView:(PYPhotosView *)photosView didDeleteImageIndex:(NSInteger)imageIndex{
+    NSLog(@"删除一个图片%d",imageIndex);
+}
 @end
