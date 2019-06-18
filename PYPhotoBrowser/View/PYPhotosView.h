@@ -46,6 +46,13 @@ typedef NS_ENUM(NSInteger, PYPhotosViewPageType) { // 分页类型
 - (void)photosView:(PYPhotosView *)photosView didPreviewImagesWithPreviewControlelr:(PYPhotosPreviewController *)previewControlelr;
 
 /**
+ 点击photoview 触发的代理
+
+ @param photosView <#photosView description#>
+ @param didClickIndex <#didClickIndex description#>
+ */
+- (void)photosView:(PYPhotosView *)photosView didClickPhotoView:(PYPhotoView *)photoView;
+/**
  * 图片浏览将要显示时调用
  */
 - (void)photosView:(PYPhotosView *)photosView willShowWithPhotos:(NSArray<PYPhoto *> *)photos index:(NSInteger)index;
@@ -118,7 +125,8 @@ typedef NS_ENUM(NSInteger, PYPhotosViewPageType) { // 分页类型
 @property (nonatomic, assign) CGFloat showDuration;
 /** 隐藏动画时长：（默认0.5s） */
 @property (nonatomic, assign) CGFloat hiddenDuration;
-
+/// 点击不预览 默认no
+@property (nonatomic, assign) BOOL  isNotPre;
 /** 快速创建photosView对象 */
 + (instancetype)photosView;
 /** photos : 保存图片链接的数组 */
