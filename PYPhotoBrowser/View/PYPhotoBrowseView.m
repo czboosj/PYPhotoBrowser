@@ -69,6 +69,7 @@
     photosView.hiddenDuration = self.hiddenDuration;
     photosView.placeholderImage = self.placeholderImage;
     photosView.hiddenPageControl = self.hiddenPageControl;
+    photosView.pageType = self.pageType;
     
     NSMutableArray *photosM = [NSMutableArray array];
     // 获取图片个数

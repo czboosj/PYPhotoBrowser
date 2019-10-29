@@ -6,7 +6,9 @@
 
 #import <UIKit/UIKit.h>
 @class PYPhotoBrowseView;
+
 #import "PYPhotoView.h"
+#import "PYPhotosView.h"
 
 @protocol PYPhotoBrowseViewDelegate <NSObject>
 
@@ -100,7 +102,7 @@
 @property (nonatomic, strong) UIImage *placeholderImage;
 /** 是否隐藏指示器，默认为：NO */
 @property (nonatomic, assign) BOOL hiddenPageControl;
-
+@property (nonatomic, assign) PYPhotosViewPageType pageType;
 /** 用来记录当前下标 */
 @property (nonatomic, assign) NSInteger currentIndex;
 
