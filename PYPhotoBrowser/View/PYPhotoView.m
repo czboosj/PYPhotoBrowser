@@ -5,7 +5,7 @@
 //
 
 #import "PYPhotoView.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImage.h>
 #import "PYPhoto.h"
 #import "PYPhotosView.h"
 #import "PYPhotoBrowserConst.h"
@@ -478,15 +478,10 @@ static CGSize originalSize;
             [center postNotification:notification];
         }
     } else if (self.photosView.photosState == PYPhotosViewStateWillCompose) { // 未发布
-        if (self.photosView.isNotPre){
-            if ([self.photosView.delegate respondsToSelector:@selector(photosView:didClickPhotoView:)])
-            [self.photosView.delegate photosView:self.photosView didClickPhotoView:self];
-            
-        }
         if (self.isPreview) { // 正在预览
             NSNotification *notifaction = [[NSNotification alloc] initWithName:PYChangeNavgationBarStateNotification object:self.photosView userInfo:userInfo];
             [center postNotification:notifaction];
-        } else if(!self.photosView.isNotPre){ // 将要预览
+        } else { // 将要预览
             // 进入预览界面
             userInfo[PYPreviewImagesDidChangedNotification] = self;
             NSNotification *notifaction = [[NSNotification alloc] initWithName:PYPreviewImagesDidChangedNotification object:self.photosView userInfo:userInfo];
@@ -583,8 +578,8 @@ static CGSize originalSize;
 {
     [self.images removeObjectAtIndex:self.tag];
     self.photosView.images = self.images;
-    // 代理
-    if ([self.photosView.delegate respondsToSelector:@selector(photosView:didDeleteImageIndex:)]) { // 自定义 自己管理删除事件
+    
+    if ([self.photosView.delegate respondsToSelector:@selector(photosView:didDeleteImageIndex:)]) {
         [self.photosView.delegate photosView:self.photosView didDeleteImageIndex:self.tag];
     }
 }
