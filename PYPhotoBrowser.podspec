@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license      = 'MIT'
     s.authors      = {'CoderKo1o' => '499491531@qq.com'}
     s.platform     = :ios, '7.0'
-    s.dependency "SDWebImage" , '~>5.0'
+    s.dependency "SDWebImage" 
     s.dependency "FLAnimatedImage"
     s.dependency "MBProgressHUD"
     s.dependency "DACircularProgress"
